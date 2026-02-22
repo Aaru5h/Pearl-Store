@@ -1,0 +1,67 @@
+:root {
+  /* Refined Lofi & Light Color Palette (Calmer, Earthier) */
+  --color-primary: #d1dac5;
+  /* Soft Matcha / Sage Green */
+  --color-secondary: #f4ede4;
+  /* Warm Oatmeal / Cream */
+  --color-accent: #eaddcf;
+  /* Soft Sand / Warm Beige */
+  --color-background: #fafaf8;
+  /* Off-white / Warm Snow */
+  --color-text: #5c5956;
+  /* Warm Charcoal */
+  --color-muted: #9e9a96;
+  --color-primary-dark: #aebc9e;
+  /* Darker Sage for contrast */
+
+  --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.04);
+  --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.08);
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 8px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-quicksand), sans-serif;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.cute-title {
+  font-family: var(--font-caveat), cursive;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.lofi-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Glassmorphism helpers */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
