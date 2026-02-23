@@ -7,31 +7,33 @@ import styles from "./Navbar.module.css";
 
 export default function Navbar() {
     return (
-        <motion.nav
-            className={styles.navbar}
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            transition={{ type: "spring", stiffness: 100, damping: 20 }}
-        >
-            <div className={`lofi-container ${styles.navContent}`}>
-                <div className={styles.menuIcon}>
-                    <Menu size={24} color="var(--color-text)" />
-                </div>
+        <div className={styles.navWrapper}>
+            <motion.nav
+                className={`${styles.navbar} glass bento-card`}
+                initial={{ y: -100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.1 }}
+            >
+                <div className={styles.navContent}>
+                    <div className={styles.menuIcon}>
+                        <Menu size={24} color="var(--color-text)" />
+                    </div>
 
-                <Link href="/" className={styles.logo}>
-                    Pearl Store
-                </Link>
+                    <Link href="/" className={styles.logo}>
+                        Pearl.
+                    </Link>
 
-                <div className={styles.actions}>
-                    <button className={styles.iconBtn}>
-                        <Heart size={22} color="var(--color-primary)" />
-                    </button>
-                    <button className={styles.iconBtn}>
-                        <ShoppingBag size={22} color="var(--color-text)" />
-                        <span className={styles.badge}>2</span>
-                    </button>
+                    <div className={styles.actions}>
+                        <button className={styles.iconBtn}>
+                            <Heart size={20} color="var(--color-text)" />
+                        </button>
+                        <button className={styles.iconBtn}>
+                            <ShoppingBag size={20} color="var(--color-text)" />
+                            <span className={styles.badge}>2</span>
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </motion.nav>
+            </motion.nav>
+        </div>
     );
 }

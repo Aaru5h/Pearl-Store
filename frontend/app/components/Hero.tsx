@@ -10,70 +10,67 @@ export default function Hero() {
             <div className={`lofi-container ${styles.heroContent}`}>
                 <motion.div
                     className={styles.textContent}
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                 >
-                    <motion.span
+                    <motion.div
                         className={styles.badge}
-                        initial={{ opacity: 0, scale: 0.8 }}
+                        initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.3, duration: 0.5 }}
+                        transition={{ delay: 0.2 }}
                     >
-                        Latest Collection
-                    </motion.span>
+                        <span className={styles.badgeDot}></span>
+                        New Arrivals 2026
+                    </motion.div>
 
-                    <motion.h1
-                        className="cute-title"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.4, duration: 0.6 }}
-                    >
-                        Lofi lifestyle, <br />
-                        elevated living.
-                    </motion.h1>
+                    <h1 className={styles.title}>
+                        Curated comfort. <br />
+                        <span className={styles.highlight}>Professional grade.</span>
+                    </h1>
 
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.6, duration: 0.8 }}
-                    >
-                        Discover hand-picked essentials for your space. Premium quality goods designed to bring calm, light, and a chill aesthetic to your everyday routine.
-                    </motion.p>
+                    <p className={styles.subtitle}>
+                        Transform your space with our milky pastel bento collection. Intentionally designed to blend cozy aesthetics with uncompromising quality.
+                    </p>
 
-                    <motion.button
-                        className={styles.ctaButton}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.8, duration: 0.5 }}
-                    >
-                        Shop Now <ArrowRight size={18} />
-                    </motion.button>
-                </motion.div>
-
-                <motion.div
-                    className={styles.imageContent}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.2, duration: 0.8 }}
-                >
-                    {/* We'll use a soft CSS gradient shape as a placeholder for a cute image */}
-                    <div className={`${styles.blob} glass`}>
-                        <motion.div
-                            className={styles.innerImage}
-                            animate={{
-                                y: [0, -15, 0],
-                            }}
-                            transition={{
-                                repeat: Infinity,
-                                duration: 6,
-                                ease: "easeInOut"
-                            }}
-                        />
+                    <div className={styles.actions}>
+                        <motion.button
+                            className={styles.primaryBtn}
+                            whileHover={{ scale: 1.03 }}
+                            whileTap={{ scale: 0.97 }}
+                        >
+                            Shop Collection <ArrowRight size={18} />
+                        </motion.button>
+                        <motion.button
+                            className={styles.secondaryBtn}
+                            whileHover={{ scale: 1.03 }}
+                            whileTap={{ scale: 0.97 }}
+                        >
+                            Explore Story
+                        </motion.button>
                     </div>
                 </motion.div>
+
+                <div className={styles.visualContent}>
+                    <motion.div
+                        className={`${styles.bentoImg1} bento-card`}
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3, duration: 0.8 }}
+                    />
+                    <motion.div
+                        className={`${styles.bentoImg2} bento-card`}
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.5, duration: 0.8 }}
+                    />
+                    <motion.div
+                        className={`${styles.bentoImg3} bento-card`}
+                        initial={{ opacity: 0, y: -50 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.7, duration: 0.8 }}
+                    />
+                </div>
             </div>
         </section>
     );

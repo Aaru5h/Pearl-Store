@@ -1,11 +1,6 @@
 import type { Metadata } from "next";
-import { Caveat, Quicksand } from "next/font/google";
+import { Quicksand } from "next/font/google";
 import "./globals.css";
-
-const caveat = Caveat({
-  variable: "--font-caveat",
-  subsets: ["latin"],
-});
 
 const quicksand = Quicksand({
   variable: "--font-quicksand",
@@ -24,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${quicksand.variable} ${caveat.variable}`}>
+      <body className={`${quicksand.variable} antialiased`}>
         {children}
       </body>
     </html>
