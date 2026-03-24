@@ -125,49 +125,31 @@
 
 .visualContent {
     flex: 1.2;
-    height: 540px;
+    height: 600px;
     position: relative;
     z-index: 10;
+    cursor: grab;
+}
+.visualContent:active {
+    cursor: grabbing;
 }
 
-/* Bento composition elements */
-.bentoImg1 {
-    position: absolute;
-    top: 5%;
-    left: 0;
-    width: 60%;
-    height: 90%;
-    background: linear-gradient(145deg, var(--color-primary), var(--color-primary-dark));
-    border-radius: var(--radius-xl);
-}
-
-.bentoImg2 {
-    position: absolute;
-    bottom: 5%;
-    right: 5%;
-    width: 35%;
-    height: 55%;
-    background: linear-gradient(145deg, var(--color-accent), #8286a0);
-    border-radius: var(--radius-xl);
-}
-
-.bentoImg3 {
-    position: absolute;
-    top: 5%;
-    right: 5%;
-    width: 30%;
-    height: 35%;
-    background: var(--color-secondary);
-    border-radius: var(--radius-xl);
+.loading3D {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    font-family: inherit;
+    animation: pulse 2s infinite ease-in-out;
 }
 
-.bentoImg3::after {
-    content: '✧';
-    font-size: 4rem;
-    color: var(--color-primary);
+@keyframes pulse {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
 }
 
 @media (max-width: 992px) {

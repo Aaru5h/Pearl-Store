@@ -1,29 +1,23 @@
 :root {
-  /* Milky Pastel Bento Palette */
-  --color-primary: #ffc4c4;
-  /* Blush Peach */
-  --color-secondary: #fffdf9;
-  /* Marshmallow / Cream */
-  --color-accent: #9b9fb5;
-  /* Muted Periwinkle */
-  --color-background: #f4f5f0;
-  /* Soft beige grey */
-  --color-text: #3a3335;
-  /* Espresso */
-  --color-muted: #8c8486;
-  /* Warm grey */
-  --color-primary-dark: #ff9e9e;
-  /* Deeper Peach */
+  /* Warm Aesthetic Layout Palette */
+  --color-primary: #f2a68d;      /* Warm Apricot / Peach */
+  --color-secondary: #fdfbf7;    /* Soft Oat / Cream */
+  --color-accent: #b2c9ab;       /* Matcha Green */
+  --color-background: #f7f3ec;   /* Warm Creamy Background */
+  --color-text: #4a3b32;         /* Deep Warm Brown / Espresso */
+  --color-muted: #d0bba6;        /* Muted Warm Sand */
+  --color-primary-dark: #e88d6f; /* Deeper Terracotta/Apricot */
 
-  --shadow-bento: 0 10px 40px -10px rgba(58, 51, 53, 0.08);
-  /* Espresso tinted shadow */
-  --shadow-hover: 0 20px 40px -10px rgba(58, 51, 53, 0.15);
+  /* Super soft, deep, comforting shadows */
+  --shadow-bento: 0 16px 40px -12px rgba(74, 59, 50, 0.08);
+  --shadow-hover: 0 24px 50px -8px rgba(74, 59, 50, 0.16);
 
+  /* Exaggerated cute radii */
   --radius-pill: 9999px;
-  --radius-xl: 32px;
-  --radius-lg: 24px;
-  --radius-md: 16px;
-  --radius-sm: 8px;
+  --radius-xl: 48px;
+  --radius-lg: 36px;
+  --radius-md: 24px;
+  --radius-sm: 16px;
 }
 
 * {
@@ -35,7 +29,7 @@
 body {
   background-color: var(--color-background);
   color: var(--color-text);
-  font-family: var(--font-quicksand), sans-serif;
+  font-family: var(--font-nunito), sans-serif;
   overflow-x: hidden;
   line-height: 1.6;
 }
@@ -48,9 +42,9 @@ h4,
 h5,
 h6,
 .cute-title {
-  /* Use quicksand for a bold, bouncy, clean look */
-  font-family: var(--font-quicksand), sans-serif;
-  font-weight: 700;
+  /* Use nunito for a super bouncy, soft look */
+  font-family: var(--font-nunito), sans-serif;
+  font-weight: 800;
   color: var(--color-text);
   letter-spacing: -0.02em;
 }

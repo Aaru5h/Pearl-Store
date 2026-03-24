@@ -3,6 +3,13 @@
 import { motion } from "framer-motion";
 import styles from "./Hero.module.css";
 import { ArrowRight } from "lucide-react";
+import dynamic from "next/dynamic";
+
+// Dynamically import the 3D canvas with SSR disabled to prevent hydration and WebGL context loss bugs.
+const Hero3D = dynamic(() => import('./Hero3D'), { 
+    ssr: false,
+    loading: () => <div className={styles.loading3D}>Loading soft vibes...</div>
+});
 
 export default function Hero() {
     return (
@@ -10,66 +17,73 @@ export default function Hero() {
             <div className={`lofi-container ${styles.heroContent}`}>
                 <motion.div
                     className={styles.textContent}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                        hidden: { opacity: 0 },
+                        visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
+                    }}
                 >
                     <motion.div
                         className={styles.badge}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.2 }}
+                        variants={{
+                            hidden: { opacity: 0, scale: 0.8, y: 10 },
+                            visible: { opacity: 1, scale: 1, y: 0, transition: { type: "spring", bounce: 0.6 } }
+                        }}
                     >
                         <span className={styles.badgeDot}></span>
-                        New Arrivals 2026
+                        Warm & Aesthetic 2026
                     </motion.div>
 
-                    <h1 className={styles.title}>
-                        Curated comfort. <br />
-                        <span className={styles.highlight}>Professional grade.</span>
-                    </h1>
+                    <motion.h1 
+                        className={styles.title}
+                        variants={{
+                            hidden: { opacity: 0, y: 20 },
+                            visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } }
+                        }}
+                    >
+                        Warm aesthetics. <br />
+                        <span className={styles.highlight}>Endless comfort.</span>
+                    </motion.h1>
 
-                    <p className={styles.subtitle}>
-                        Transform your space with our milky pastel bento collection. Intentionally designed to blend cozy aesthetics with uncompromising quality.
-                    </p>
+                    <motion.p 
+                        className={styles.subtitle}
+                        variants={{
+                            hidden: { opacity: 0, y: 20 },
+                            visible: { opacity: 1, y: 0 }
+                        }}
+                    >
+                        Transform your space with our premium soft bento collection. Intentionally designed to blend cute details with eye-soothing, uncompromising quality.
+                    </motion.p>
 
-                    <div className={styles.actions}>
-                        <motion.button
+                    <motion.div 
+                        className={styles.actions}
+                        variants={{
+                            hidden: { opacity: 0, y: 20 },
+                            visible: { opacity: 1, y: 0 }
+                        }}
+                    >
+                         <motion.button
                             className={styles.primaryBtn}
-                            whileHover={{ scale: 1.03 }}
-                            whileTap={{ scale: 0.97 }}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            transition={{ type: "spring", stiffness: 400, damping: 17 }}
                         >
                             Shop Collection <ArrowRight size={18} />
                         </motion.button>
                         <motion.button
                             className={styles.secondaryBtn}
-                            whileHover={{ scale: 1.03 }}
-                            whileTap={{ scale: 0.97 }}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            transition={{ type: "spring", stiffness: 400, damping: 17 }}
                         >
                             Explore Story
                         </motion.button>
-                    </div>
+                    </motion.div>
                 </motion.div>
 
                 <div className={styles.visualContent}>
-                    <motion.div
-                        className={`${styles.bentoImg1} bento-card`}
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3, duration: 0.8 }}
-                    />
-                    <motion.div
-                        className={`${styles.bentoImg2} bento-card`}
-                        initial={{ opacity: 0, x: 50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.5, duration: 0.8 }}
-                    />
-                    <motion.div
-                        className={`${styles.bentoImg3} bento-card`}
-                        initial={{ opacity: 0, y: -50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.7, duration: 0.8 }}
-                    />
+                    <Hero3D />
                 </div>
             </div>
         </section>

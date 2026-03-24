@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { Quicksand } from "next/font/google";
+import { Nunito } from "next/font/google";
 import "./globals.css";
 
-const quicksand = Quicksand({
-  variable: "--font-quicksand",
+const nunito = Nunito({
+  variable: "--font-nunito",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: "Pearl Store",
-  description: "A cute, lofi, and light store for all your needs.",
+  description: "A cute, lofi, and comforting store for all your needs.",
 };
 
 export default function RootLayout({
@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${quicksand.variable} antialiased`}>
+      <body className={`${nunito.variable} antialiased`}>
         {children}
       </body>
     </html>
