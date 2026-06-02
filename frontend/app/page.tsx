@@ -1,6 +1,8 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import Marquee from "./components/Marquee";
 import FeaturedProducts from "./components/FeaturedProducts";
+import Story from "./components/Story";
 import Footer from "./components/Footer";
 
 export default function Home() {
@@ -9,7 +11,9 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <Marquee />
         <FeaturedProducts />
+        <Story />
       </main>
       <Footer />
     </>

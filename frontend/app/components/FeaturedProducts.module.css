@@ -1,198 +1,226 @@
-.productSection {
-    padding: 6rem 0;
-    position: relative;
-    background: var(--color-background);
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
+.section {
+    padding: 8rem 0;
+    background: var(--color-bg);
 }
 
 .header {
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
 }
 
-.sectionTitle {
-    font-size: 3rem;
-    color: var(--color-text);
+.sectionTag {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-accent);
     margin-bottom: 1rem;
 }
 
-.sectionSubtitle {
-    color: var(--color-muted);
-    font-size: 1.15rem;
+.sectionTitle {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    color: var(--color-text);
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
 }
 
-/* Bento Grid */
-.productGrid {
+.sectionSub {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    max-width: 400px;
+}
+
+.counter {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-text-dim);
+    white-space: nowrap;
+}
+
+/* ── Grid ── */
+.grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 320px;
     gap: 1.5rem;
+    padding: 0 clamp(1.5rem, 4vw, 4rem);
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
-.productCard {
+/* Bento sizing: first card spans 2 cols, last card spans 2 cols */
+.card:nth-child(1) {
+    grid-column: span 2;
+}
+
+.card:nth-child(4) {
+    grid-column: span 2;
+}
+
+.card {
+    background: var(--color-bg-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow 0.4s ease, border-color 0.4s ease;
     display: flex;
     flex-direction: column;
-    padding: 1rem;
-    cursor: pointer;
-    background: var(--color-secondary);
 }
 
-/* Bento Sizing Logic */
-.productCard:nth-child(1) {
-    grid-column: span 2;
-    grid-row: span 2;
+.card:hover {
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(255, 255, 255, 0.08);
 }
 
-.productCard:nth-child(1) .imageBox {
-    height: 100%;
-}
-
-.productCard:nth-child(4) {
-    grid-column: span 2;
-}
-
-.productCard:nth-child(4) .productInfo,
-.productCard:nth-child(5) .productInfo {
-    margin-top: auto;
-}
-
-.productCard:nth-child(4) .imageBox,
-.productCard:nth-child(5) .imageBox {
-    max-height: 200px;
-}
-
-
-.imageBox {
-    flex: 1;
-    width: 100%;
-    border-radius: var(--radius-lg);
+/* ── Card Visual ── */
+.cardVisual {
     position: relative;
+    height: 320px;
+    background: var(--color-surface);
     overflow: hidden;
-    margin-bottom: 1.5rem;
-    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.03);
-    transition: all 0.4s ease;
 }
 
-.wishlistBtn {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: rgba(255, 255, 255, 0.9);
-    border: none;
-    width: 38px;
-    height: 38px;
-    border-radius: var(--radius-pill);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    backdrop-filter: blur(8px);
-    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.2s;
-    z-index: 5;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+.card:nth-child(1) .cardVisual {
+    height: 400px;
 }
 
-.wishlistBtn:hover {
-    transform: scale(1.15);
-    background: white;
-}
-
-.hoverOverlay {
+.canvas3D {
     position: absolute;
     inset: 0;
-    background: rgba(255, 253, 249, 0.6);
-    backdrop-filter: blur(2px);
+}
+
+.canvasPlaceholder {
+    width: 100%;
+    height: 100%;
+    background: var(--color-surface);
+}
+
+.cardTag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.35rem 0.9rem;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-pill);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text);
+    z-index: 2;
+}
+
+.cardOverlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(8, 8, 10, 0.4);
+    backdrop-filter: blur(4px);
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s ease;
+    z-index: 1;
 }
 
-.productCard:hover .hoverOverlay {
+.card:hover .cardOverlay {
     opacity: 1;
 }
 
-.viewText {
-    background: var(--color-text);
-    color: var(--color-secondary);
-    padding: 0.8rem 1.5rem;
-    border-radius: var(--radius-pill);
-    font-size: 0.9rem;
-    font-weight: 700;
-    display: flex;
+.quickView {
+    display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
+    padding: 0.7rem 1.5rem;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--color-text);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     transform: translateY(10px);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.productCard:hover .viewText {
+.card:hover .quickView {
     transform: translateY(0);
 }
 
-.productInfo {
-    padding: 0 0.5rem 0.5rem;
+/* ── Card Info ── */
+.cardInfo {
+    padding: 1.5rem;
 }
 
-.infoTop {
+.cardMeta {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: baseline;
     margin-bottom: 0.5rem;
 }
 
-.productName {
-    font-size: 1.5rem;
+.cardName {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 500;
     color: var(--color-text);
-    line-height: 1.2;
+    letter-spacing: -0.01em;
 }
 
-.price {
-    font-weight: 800;
-    color: var(--color-text);
-    font-size: 1.2rem;
-    background: var(--color-background);
-    padding: 0.3rem 0.8rem;
-    border-radius: var(--radius-pill);
+.cardPrice {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--color-text-muted);
 }
 
-.productDesc {
-    color: var(--color-muted);
-    font-size: 0.95rem;
+.cardDesc {
+    font-size: 0.85rem;
+    color: var(--color-text-dim);
 }
 
-@media (max-width: 900px) {
-    .productGrid {
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+    .grid {
         grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 280px;
     }
 
-    .productCard:nth-child(1) {
-        grid-column: span 2;
-        grid-row: span 1;
-    }
-
-    .productCard:nth-child(4) {
+    .card:nth-child(1),
+    .card:nth-child(4) {
         grid-column: span 2;
     }
 }
 
-@media (max-width: 600px) {
-    .productGrid {
-        grid-template-columns: 1fr;
-        grid-auto-rows: auto;
+@media (max-width: 768px) {
+    .section {
+        padding: 5rem 0;
     }
 
-    .productCard {
-        grid-column: span 1 !important;
-        grid-row: span 1 !important;
-        height: 380px;
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card:nth-child(1),
+    .card:nth-child(4) {
+        grid-column: span 1;
+    }
+
+    .cardVisual,
+    .card:nth-child(1) .cardVisual {
+        height: 260px;
     }
 }

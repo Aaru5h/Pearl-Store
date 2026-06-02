@@ -1,15 +1,11 @@
 import type { Metadata } from "next";
-import { Nunito } from "next/font/google";
 import "./globals.css";
-
-const nunito = Nunito({
-  variable: "--font-nunito",
-  subsets: ["latin"],
-});
+import CustomCursor from "./components/CustomCursor";
 
 export const metadata: Metadata = {
-  title: "Pearl Store",
-  description: "A cute, lofi, and comforting store for all your needs.",
+  title: "PEARL — Curated Premium Store",
+  description: "Discover intentionally crafted objects that transform your space. Premium quality, timeless design.",
+  keywords: ["store", "premium", "luxury", "home", "lifestyle", "pearl"],
 };
 
 export default function RootLayout({
@@ -19,7 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${nunito.variable} antialiased`}>
+      <body>
+        <div className="noise-overlay" aria-hidden="true" />
+        <CustomCursor />
         {children}
       </body>
     </html>

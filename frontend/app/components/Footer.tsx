@@ -1,48 +1,111 @@
 "use client";
 
-import { Heart, Instagram, Twitter, Mail } from "lucide-react";
+import { Instagram, Twitter, Mail, ArrowUpRight } from "lucide-react";
 import styles from "./Footer.module.css";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
+const footerLinks = {
+    explore: [
+        { label: "New Arrivals", href: "#" },
+        { label: "Best Sellers", href: "#" },
+        { label: "The Collection", href: "#collection" },
+        { label: "Gift Cards", href: "#" },
+    ],
+    info: [
+        { label: "Our Story", href: "#story" },
+        { label: "Contact Us", href: "#contact" },
+        { label: "FAQ & Returns", href: "#" },
+        { label: "Shipping", href: "#" },
+    ],
+};
+
 export default function Footer() {
     return (
-        <section className={styles.footerWrapper}>
-            <footer className={styles.footer}>
-                <div className={`lofi-container ${styles.footerContent}`}>
+        <footer id="contact" className={styles.footer}>
+            {/* Massive watermark */}
+            <div className={styles.watermark} aria-hidden="true">PEARL</div>
+
+            <div className={`container ${styles.footerContent}`}>
+                <div className={styles.topSection}>
                     <div className={styles.brand}>
-                        <Link href="/" className={styles.logo}>Pearl.</Link>
-                        <p className={styles.tagline}>Curated comfort.<br />Professional grade.</p>
+                        <Link href="/" className={styles.logo}>PEARL</Link>
+                        <p className={styles.tagline}>
+                            Curated comfort.<br />
+                            Intentional living.
+                        </p>
+                    </div>
 
+                    <div className={styles.newsletter}>
+                        <p className={styles.newsletterTitle}>Stay in touch</p>
+                        <div className={styles.inputWrapper}>
+                            <input
+                                type="email"
+                                placeholder="your@email.com"
+                                className={styles.emailInput}
+                                aria-label="Email for newsletter"
+                            />
+                            <button className={styles.submitBtn} aria-label="Subscribe">
+                                <ArrowUpRight size={16} />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div className={styles.linksSection}>
+                    <div className={styles.linkColumn}>
+                        <h4 className={styles.columnTitle}>Explore</h4>
+                        {footerLinks.explore.map((link) => (
+                            <Link key={link.label} href={link.href} className={styles.footerLink}>
+                                {link.label}
+                            </Link>
+                        ))}
+                    </div>
+                    <div className={styles.linkColumn}>
+                        <h4 className={styles.columnTitle}>Information</h4>
+                        {footerLinks.info.map((link) => (
+                            <Link key={link.label} href={link.href} className={styles.footerLink}>
+                                {link.label}
+                            </Link>
+                        ))}
+                    </div>
+                    <div className={styles.linkColumn}>
+                        <h4 className={styles.columnTitle}>Connect</h4>
                         <div className={styles.socials}>
-                            <a href="#" className={styles.socialBtn}><Instagram size={20} /></a>
-                            <a href="#" className={styles.socialBtn}><Twitter size={20} /></a>
-                            <a href="#" className={styles.socialBtn}><Mail size={20} /></a>
-                        </div>
-                    </div>
-
-                    <div className={styles.links}>
-                        <div className={styles.linkGroup}>
-                            <h4>Explore</h4>
-                            <Link href="#">New Arrivals</Link>
-                            <Link href="#">Best Sellers</Link>
-                            <Link href="#">The Bento Collection</Link>
-                            <Link href="#">Gift Cards</Link>
-                        </div>
-                        <div className={styles.linkGroup}>
-                            <h4>Information</h4>
-                            <Link href="#">Our Story</Link>
-                            <Link href="#">Contact Us</Link>
-                            <Link href="#">FAQ & Returns</Link>
-                            <Link href="#">Shipping Policy</Link>
+                            <motion.a
+                                href="#"
+                                className={styles.socialBtn}
+                                whileHover={{ y: -3 }}
+                                aria-label="Instagram"
+                            >
+                                <Instagram size={18} />
+                            </motion.a>
+                            <motion.a
+                                href="#"
+                                className={styles.socialBtn}
+                                whileHover={{ y: -3 }}
+                                aria-label="Twitter"
+                            >
+                                <Twitter size={18} />
+                            </motion.a>
+                            <motion.a
+                                href="#"
+                                className={styles.socialBtn}
+                                whileHover={{ y: -3 }}
+                                aria-label="Email"
+                            >
+                                <Mail size={18} />
+                            </motion.a>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div className={styles.bottomBar}>
-                    <p>&copy; {new Date().getFullYear()} Pearl Store. Designed with <Heart size={14} className={styles.heartIcon} style={{ display: 'inline', verticalAlign: 'middle' }} color="var(--color-primary)" /> for aesthetic comfort.</p>
+            <div className={styles.bottomBar}>
+                <div className="container">
+                    <p>&copy; {new Date().getFullYear()} Pearl Store. All rights reserved.</p>
                 </div>
-            </footer>
-        </section>
+            </div>
+        </footer>
     );
 }

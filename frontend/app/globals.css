@@ -1,52 +1,85 @@
+/* ============================
+   PEARL STORE — DESIGN SYSTEM
+   Dark, Immersive, 3D-Forward
+   ============================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
 :root {
-  /* Warm Aesthetic Layout Palette */
-  --color-primary: #f2a68d;      /* Warm Apricot / Peach */
-  --color-secondary: #fdfbf7;    /* Soft Oat / Cream */
-  --color-accent: #b2c9ab;       /* Matcha Green */
-  --color-background: #f7f3ec;   /* Warm Creamy Background */
-  --color-text: #4a3b32;         /* Deep Warm Brown / Espresso */
-  --color-muted: #d0bba6;        /* Muted Warm Sand */
-  --color-primary-dark: #e88d6f; /* Deeper Terracotta/Apricot */
+  /* ── Core Palette ── */
+  --color-bg:         #08080a;
+  --color-bg-elevated: #111114;
+  --color-bg-card:    #141418;
+  --color-surface:    #1a1a1f;
 
-  /* Super soft, deep, comforting shadows */
-  --shadow-bento: 0 16px 40px -12px rgba(74, 59, 50, 0.08);
-  --shadow-hover: 0 24px 50px -8px rgba(74, 59, 50, 0.16);
+  --color-text:       #e8e4df;
+  --color-text-muted: #706f6d;
+  --color-text-dim:   #4a4946;
 
-  /* Exaggerated cute radii */
-  --radius-pill: 9999px;
-  --radius-xl: 48px;
-  --radius-lg: 36px;
-  --radius-md: 24px;
-  --radius-sm: 16px;
+  /* Accent — iridescent pearl spectrum */
+  --color-accent:     #c4b5fd;    /* Soft violet */
+  --color-accent-2:   #93c5fd;    /* Sky blue */
+  --color-accent-warm: #fbbf24;   /* Gold */
+
+  /* Borders */
+  --border-subtle:    1px solid rgba(255, 255, 255, 0.06);
+  --border-glass:     1px solid rgba(255, 255, 255, 0.1);
+
+  /* Shadows */
+  --shadow-glow:      0 0 80px -20px rgba(196, 181, 253, 0.15);
+  --shadow-card:      0 24px 48px -12px rgba(0, 0, 0, 0.5);
+  --shadow-hover:     0 32px 64px -12px rgba(0, 0, 0, 0.6), 0 0 60px -20px rgba(196, 181, 253, 0.1);
+
+  /* Radii */
+  --radius-pill:  9999px;
+  --radius-xl:    32px;
+  --radius-lg:    24px;
+  --radius-md:    16px;
+  --radius-sm:    8px;
+
+  /* Typography */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', sans-serif;
+
+  /* Transitions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring:   cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-* {
+/* ── Reset & Base ── */
+*, *::before, *::after {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background-color: var(--color-background);
+  background-color: var(--color-bg);
   color: var(--color-text);
-  font-family: var(--font-nunito), sans-serif;
+  font-family: var(--font-body);
   overflow-x: hidden;
   line-height: 1.6;
+  cursor: none;
 }
 
-/* Base typography */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.cute-title {
-  /* Use nunito for a super bouncy, soft look */
-  font-family: var(--font-nunito), sans-serif;
-  font-weight: 800;
+::selection {
+  background: rgba(196, 181, 253, 0.3);
+  color: #fff;
+}
+
+/* ── Typography ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
   color: var(--color-text);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 }
 
 a {
@@ -54,31 +87,109 @@ a {
   text-decoration: none;
 }
 
-.lofi-container {
-  max-width: 1200px;
+/* ── Container ── */
+.container {
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 clamp(1.5rem, 4vw, 4rem);
 }
 
-/* Bento base class */
-.bento-card {
-  background: var(--color-secondary);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-bento);
-  overflow: hidden;
-  position: relative;
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
-}
-
-.bento-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-hover);
-}
-
-/* Glassmorphism helpers */
+/* ── Glassmorphism ── */
 .glass {
-  background: rgba(255, 253, 249, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: var(--border-glass);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border: var(--border-glass);
+}
+
+/* ── Custom Cursor ── */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  mix-blend-mode: difference;
+  transition: transform 0.15s var(--ease-out-expo);
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  mix-blend-mode: difference;
+  transition: width 0.3s var(--ease-out-expo),
+              height 0.3s var(--ease-out-expo),
+              border-color 0.3s;
+}
+
+.cursor-ring.hovering {
+  width: 64px;
+  height: 64px;
+  border-color: var(--color-accent);
+}
+
+/* ── Gradient Text Utility ── */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-text) 0%, var(--color-accent) 50%, var(--color-accent-2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Noise Texture Overlay ── */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-text-dim);
+  border-radius: var(--radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* ── Media Query Helpers ── */
+@media (max-width: 768px) {
+  body {
+    cursor: auto;
+  }
+  .cursor-dot,
+  .cursor-ring {
+    display: none;
+  }
 }

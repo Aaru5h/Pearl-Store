@@ -1,156 +1,218 @@
-.footerWrapper {
-    background: var(--color-background);
-    padding: 0 1rem 1rem 1rem;
+.footer {
+    position: relative;
+    background: var(--color-bg-elevated);
+    padding-top: 8rem;
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-.footer {
-    background-color: var(--color-text);
-    color: var(--color-secondary);
-    border-radius: 40px;
-    padding-top: 5rem;
-    overflow: hidden;
-    position: relative;
-    box-shadow: var(--shadow-bento);
+/* ── Watermark ── */
+.watermark {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-display);
+    font-size: clamp(8rem, 18vw, 20rem);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.015);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
 }
 
 .footerContent {
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Top Section ── */
+.topSection {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 4rem;
-    margin-bottom: 4rem;
-    position: relative;
-    z-index: 2;
+    align-items: flex-start;
+    margin-bottom: 5rem;
+    gap: 3rem;
 }
 
 .brand {
     flex: 1;
-    min-width: 280px;
 }
 
 .logo {
-    font-size: 3.5rem;
-    font-weight: 800;
-    color: var(--color-secondary);
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    color: var(--color-text);
+    text-decoration: none;
     display: block;
-    margin-bottom: 0.5rem;
-    letter-spacing: -2px;
+    margin-bottom: 1rem;
 }
 
 .tagline {
-    color: var(--color-muted);
-    font-size: 1.15rem;
-    margin-bottom: 2rem;
-    line-height: 1.5;
+    font-size: 1rem;
+    color: var(--color-text-dim);
+    line-height: 1.6;
 }
 
-.socials {
+/* ── Newsletter ── */
+.newsletter {
+    flex: 0 0 auto;
+    max-width: 320px;
+}
+
+.newsletterTitle {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+}
+
+.inputWrapper {
     display: flex;
-    gap: 1rem;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-pill);
+    padding: 0.3rem;
+    background: rgba(255, 255, 255, 0.02);
+    transition: border-color 0.3s;
 }
 
-.socialBtn {
-    width: 45px;
-    height: 45px;
-    border-radius: var(--radius-pill);
-    background: rgba(255, 255, 255, 0.05);
+.inputWrapper:focus-within {
+    border-color: rgba(196, 181, 253, 0.4);
+}
+
+.emailInput {
+    flex: 1;
+    border: none;
+    background: none;
+    padding: 0.7rem 1rem;
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    outline: none;
+}
+
+.emailInput::placeholder {
+    color: var(--color-text-dim);
+}
+
+.submitBtn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: var(--color-text);
+    color: var(--color-bg);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-secondary);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    flex-shrink: 0;
 }
 
-.socialBtn:hover {
-    background: var(--color-primary);
-    color: var(--color-text);
-    transform: translateY(-5px);
+.submitBtn:hover {
+    background: var(--color-accent);
+    transform: scale(1.05);
 }
 
-.links {
+/* ── Links ── */
+.linksSection {
     display: flex;
     gap: 6rem;
-    flex-wrap: wrap;
+    padding-bottom: 4rem;
 }
 
-.linkGroup {
+.linkColumn {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
+    gap: 1rem;
 }
 
-.linkGroup h4 {
-    font-size: 1.3rem;
-    color: var(--color-secondary);
+.columnTitle {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-text);
     margin-bottom: 0.5rem;
-    position: relative;
+}
+
+.footerLink {
+    font-size: 0.9rem;
+    color: var(--color-text-dim);
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s;
     display: inline-block;
 }
 
-/* cute underline for headings */
-.linkGroup h4::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    width: 20px;
-    height: 3px;
-    background: var(--color-primary);
-    border-radius: var(--radius-pill);
+.footerLink:hover {
+    color: var(--color-text);
+    transform: translateX(4px);
 }
 
-.linkGroup a {
-    color: var(--color-muted);
-    transition: color 0.2s ease, transform 0.2s;
-    font-size: 1.05rem;
-    display: block;
+/* ── Socials ── */
+.socials {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
 }
 
-.linkGroup a:hover {
-    color: var(--color-primary);
-    transform: translateX(5px);
+.socialBtn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    transition: all 0.3s ease;
+    text-decoration: none;
 }
 
+.socialBtn:hover {
+    background: rgba(196, 181, 253, 0.1);
+    border-color: rgba(196, 181, 253, 0.3);
+    color: var(--color-accent);
+}
+
+/* ── Bottom Bar ── */
 .bottomBar {
-    background-color: rgba(0, 0, 0, 0.15);
-    padding: 1.5rem;
-    text-align: center;
-    color: var(--color-muted);
-    font-size: 0.95rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 1.5rem 0;
+    font-size: 0.8rem;
+    color: var(--color-text-dim);
 }
 
+/* ── Responsive ── */
 @media (max-width: 768px) {
     .footer {
-        border-radius: 30px;
-        padding-top: 4rem;
+        padding-top: 5rem;
     }
 
-    .footerContent {
+    .topSection {
         flex-direction: column;
         gap: 3rem;
     }
 
-    .brand {
-        text-align: center;
-        display: flex;
+    .newsletter {
+        max-width: 100%;
+    }
+
+    .linksSection {
         flex-direction: column;
-        align-items: center;
-    }
-
-    .links {
-        width: 100%;
         gap: 3rem;
-        justify-content: center;
-        text-align: center;
     }
 
-    .linkGroup {
-        align-items: center;
-    }
-
-    .linkGroup h4::after {
-        left: 50%;
-        transform: translateX(-50%);
+    .watermark {
+        font-size: 6rem;
+        bottom: 2rem;
     }
 }
