@@ -1,4 +1,4 @@
-# Pearl Store (Haath Ki Dukaan)
+# Pearl Store 
 
 A complete, production-grade frontend for a warm, inviting Indian general store website. The aesthetic is designed to feel warm, earthy, and handcrafted—like a well-loved neighbourhood shop that happens to be beautifully designed.
 
